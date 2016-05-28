@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.lifeix.football.games.module.staff.mapper.StaffMapper">
+
+	<!--staff表中保存的数据 -->
+	<select id="findOne"
+		resultType="com.lifeix.football.games.module.staff.po.StaffPO">
+		select * from staff where id=#{id}
+	</select>
+	<select id="findStaffByCompetitionTeamId" resultType="staff">
+		SELECT
+		staff.*, competitionteam_staff.position
+		FROM
+		staff
+		JOIN competitionteam_staff ON staff.id = competitionteam_staff.staffid
+		AND competitionteamid =#{competitionId}
+	</select>
+	<select id="findStaffByMatchTeamId" resultType="staff">
+		SELECT
+		staff.*, matchteam_staff.position
+		FROM
+		staff
+		JOIN matchteam_staff ON staff.id = matchteam_staff.staffid
+		AND matchteamid =#{matchTeamId}
+	</select>
+</mapper>

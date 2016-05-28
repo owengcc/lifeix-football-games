@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lifeix.football.games.module.competition.mapper.MatchTeamMapper">
+
+	<resultMap type="com.lifeix.football.games.model.MatchTeam" id="matchTeamMap">
+		<id column="id" property="id"/>
+		<result column="introduce" property="introduce"/>
+		<result column="setupDate" property="setupDate"/>
+		<association property="competitionTeamInfo" column="competitionteamid" select="com.lifeix.football.games.module.competition.mapper.CompetitionTeamMapper.findById"></association>
+		<association property="competitionInfo" column="competitionid" select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
+		<association property="teamInfo" column="teamid" select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
+	</resultMap>
+	
+	<select id="findTeams"  resultMap="matchTeamMap">
+		select * from matchteam where competitionid=#{0} and teamid=#{1}
+	</select>
+	
+	<select id="findMatchTeam"  resultMap="matchTeamMap">
+		select * from matchteam where id=#{matchTeamId}
+	</select>
+	
+	<resultMap type="com.lifeix.football.games.model.MatchTeamInfo" id="matchInfoTeamMap">
+		<id column="id" property="id"/>
+		<id column="name" property="name"/>
+		<result column="introduce" property="introduce"/>
+		<result column="setupDate" property="setupDate"/>
+		<association property="teamInfo" column="teamid" select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
+	</resultMap>
+	
+	<select id="findMatchTeamInfo"  resultMap="matchInfoTeamMap">
+		select * from matchteam where id=#{matchTeamId}
+	</select>
+	
+	<select id="findMatchTeamIdsByTeamId" resultType="java.lang.Long">
+		select id from matchteam where teamid=#{teamId}
+	</select>
+	
+</mapper>

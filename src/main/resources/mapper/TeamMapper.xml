@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lifeix.football.games.module.team.mapper.TeamMapper">
+
+	<resultMap type="com.lifeix.football.games.model.Team"
+		id="teamMap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="flag" property="flag" />
+		<association property="teamCategory" column="categoryid"
+			select="com.lifeix.football.games.module.team.mapper.TeamCategoryMapper.findOne"></association>
+	</resultMap>
+
+	<select id="findOne" resultMap="teamMap">
+		select * from team where
+		id=#{id}
+	</select>
+
+	<select id="findMany" resultMap="teamMap">
+		select * from team where id in
+		<foreach item="item" index="index" collection="teamIds" open="(" separator="," close=")">
+			#{item}
+		</foreach>
+	</select>
+
+	<resultMap type="com.lifeix.football.games.model.TeamInfo"
+		id="teamInfoMap" extends="teamMap">
+	</resultMap>
+
+	<select id="findSimpleOne" resultMap="teamInfoMap">
+		select * from team where
+		id=#{id}
+	</select>
+
+	<select id="findTeamsByCategoryId" resultMap="teamInfoMap">
+		select * from team
+		where categoryid=#{categoryId}
+	</select>
+
+	<select id="findTeamsByCoachId" resultMap="teamInfoMap">
+		SELECT
+		team.id,NAME,flag,categoryid,position FROM team
+		join team_coach on team.id=team_coach.teamid and team_coach.coachid = #{coachId}
+		order by
+		find_in_set( team.id,
+		(
+		SELECT
+		GROUP_CONCAT( teamid ORDER BY createdate DESC)
+		FROM team_coach WHERE coachid = #{coachId}
+		)
+		)
+
+	</select>
+
+	<select id="findTeamsByStaffId" resultMap="teamInfoMap">
+		SELECT
+		team.id,NAME,flag,categoryid,position FROM team
+		join team_staff on team.id=team_staff.teamid and team_staff.staffid = #{staffid}
+		order by
+		find_in_set( team.id,
+		(
+		SELECT
+		GROUP_CONCAT( teamid ORDER BY createdate DESC)
+		FROM team_staff WHERE staffid = #{staffid}
+		)
+		)
+
+	</select>
+
+	<select id="findTeamsByPlayerId" resultMap="teamInfoMap">
+		SELECT
+		team.id,NAME,flag,categoryid,position FROM team
+		join team_player on team.id=team_player.teamid and team_player.playerid=#{playerid}
+		order by
+		find_in_set( team.id,
+		(
+		SELECT
+		GROUP_CONCAT( teamid ORDER BY createdate DESC)
+		FROM team_player WHERE playerid = #{playerid}
+		)
+		)
+	</select>
+
+</mapper>

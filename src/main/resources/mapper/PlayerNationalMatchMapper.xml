@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.lifeix.football.games.module.player.mapper.PlayerNationalMatchMapper">
+
+	<resultMap type="playerNationalMatch" id="playerNationalMatchMap">
+		<id property="id" column="id"/>
+		<result property="playerId" column="playerid"/>
+		<result property="hostScore" column="hostscore"/>
+		<result property="awayScore" column="awayscore"/>
+		<result property="first" column="first"/>
+		<result property="showTime" column="showtime"/>
+		<result property="goal" column="goal"/>
+		<result property="booking" column="booking"/>
+		<result property="dismissal" column="dismissal"/>
+		<association property="hostTeam" column="hostteam" select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
+		<association property="awayTeam" column="awayteam" select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
+		<association property="competition" column="competitionid" select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
+	</resultMap>
+
+	<!--封装coach表中保存的数据 -->
+	<select id="findNationMathesByPlayerId" resultMap="playerNationalMatchMap">
+		select * from player_nationalmatch where playerid=#{playerId}
+	</select>
+</mapper>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.lifeix.football.games.module.competition.mapper.CompetitionTeamMapper">
+
+
+	<resultMap type="com.lifeix.football.games.model.CompetitionTeam"
+		id="competitionTeamMap">
+		<id column="id" property="id" />
+		<result column="introduce" property="introduce" />
+		<result column="setupDate" property="setupDate" />
+		<association property="competitionInfo" column="competitionid"
+			select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
+		<association property="teamInfo" column="teamid"
+			select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
+	</resultMap>
+
+	<select id="findOne" resultMap="competitionTeamMap">
+		select * from competitionteam
+		where competitionid=#{0} and teamid=#{1}
+	</select>
+	<select id="findById" resultType="competitionTeamInfo">
+		select * from competitionteam
+		where id=#{id}
+	</select>
+	
+	<resultMap type="competitionTeamInfo"
+		id="competitionTeamInfoMap">
+		<id column="id" property="id" />
+		<result column="introduce" property="introduce" />
+		<result column="setupDate" property="setupDate" />
+		<association property="teamInfo" column="teamid"
+			select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
+	</resultMap>
+	
+	
+	<select id="findByCompetitionId" resultMap="competitionTeamInfoMap">
+		SELECT
+		competitionteam.*, competition_competitionteam.`group`
+		FROM
+		competitionteam
+		JOIN competition_competitionteam
+		ON competitionteam.id = competition_competitionteam.competitionteamid
+		and competition_competitionteam.competitionid=#{competitionId}
+	</select>
+</mapper>

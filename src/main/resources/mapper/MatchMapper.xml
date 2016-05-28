@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.lifeix.football.games.module.competition.mapper.MatchMapper">
+
+	<resultMap type="com.lifeix.football.games.model.MatchInfo"
+		id="matchInfoMap">
+		<id column="id" property="id" />
+		<result column="hostScore" property="hostScore" />
+		<result column="awayScore" property="awayScore" />
+		<result column="startTime" property="startTime" />
+		<result column="position" property="position" />
+		<result column="state" property="state" />
+		<association property="competitionInfo" column="competitionid" select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
+		<association property="hostTeam" column="hostteam"
+			select="com.lifeix.football.games.module.competition.mapper.MatchTeamMapper.findMatchTeamInfo"></association>
+		<association property="awayTeam" column="awayteam"
+			select="com.lifeix.football.games.module.competition.mapper.MatchTeamMapper.findMatchTeamInfo"></association>
+	</resultMap>
+
+
+	<select id="findByCompetitionIdAndMatchTeamIds" resultMap="matchInfoMap">
+		SELECT matches.*,competition_match.`group`
+		FROM matches
+		JOIN competition_match ON matches.id = competition_match.matchid
+		and matches.competitionid=#{0}
+		and
+		(
+		hostteam in
+		<foreach item="item" index="index" collection="param2" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		or awayteam in
+		<foreach item="item" index="index" collection="param2" open="("
+			separator="," close=")">
+			#{item}
+		</foreach>
+		)
+	</select>
+
+	<select id="findByCompetitionId" resultMap="matchInfoMap">
+		SELECT matches.*,competition_match.`group`
+		FROM matches
+		JOIN competition_match ON matches.id = competition_match.matchid
+		and matches.competitionid=#{competitionId}
+	</select>
+</mapper>

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper
+	namespace="com.lifeix.football.games.module.coach.mapper.CoachMapper">
+
+
+	<!--封装coach表中保存的数据 -->
+	<select id="findOne" resultType="coach">
+		select * from coach where
+		id=#{id}
+	</select>
+	<select id="findCoachByLevel" resultType="coach">
+		select * from coach
+		<trim prefix="WHERE" prefixOverrides="AND | OR">
+			<choose>
+				<when test="level!= null">
+					level=#{1} limit #{2}, #{3}
+				</when>
+				<otherwise>
+					limit #{2}, #{3}
+				</otherwise>
+			</choose>
+		</trim>
+	</select>
+	<select id="findCoachByTeamId" resultType="coach">
+		SELECT
+		coach.*, team_coach.position
+		FROM
+		coach
+		JOIN
+		team_coach ON coach.id = team_coach.coachid
+		AND
+		teamid = #{teamId}
+	</select>
+	
+	<select id="findCoachByCompetitionTeamId" resultType="coach">
+		SELECT
+		coach.*, competitionteam_coach.position
+		FROM
+		coach
+		JOIN
+		competitionteam_coach ON coach.id = competitionteam_coach.coachid
+		AND
+		competitionteamid = #{competitionTeamId}
+	</select>
+	<select id="findCoachByMatchTeamId" resultType="coach">
+		SELECT
+		coach.*,
+		matchteam_coach.position
+		FROM
+		coach
+		JOIN matchteam_coach ON coach.id =
+		matchteam_coach.coachid
+		AND matchteamid = #{matchTeamId}
+	</select>
+</mapper>

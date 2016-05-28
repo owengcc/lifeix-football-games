@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lifeix.football.games.module.team.mapper.TeamCategoryMapper">
+
+	<resultMap type="teamCategory" id="teamCategoryMap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="fid" property="fId" />
+		<collection property="categories" column="id" ofType="teamCategory" select="findChildren"></collection>
+	</resultMap>
+
+	<select id="findOne" resultMap="teamCategoryMap">
+		select * from team_category where
+		id=#{id} 
+	</select>
+
+	<select id="findChildren" resultType="teamCategory">
+		select * from team_category
+    		where FIND_IN_SET(id, getChildLst(#{id}))
+	</select>
+	
+	<select id="findOnlyLeafChildren" resultType="teamCategory">
+		select * from team_category
+    		where FIND_IN_SET(id, getChildLst(#{id}))
+			and isLeaf=1
+	</select>
+
+</mapper>
