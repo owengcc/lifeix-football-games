@@ -26,9 +26,7 @@ public class CoachController {
     }
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Coach> findCoachByLevel(
-            @RequestParam(value = "teamCategoryId", defaultValue = "1", required = false) Long teamCategoryId,
-            @RequestParam(value = "level", required = false) String level,
+    public List<Coach> findCoachByLevel(@RequestParam(value = "level", required = false) String level,
             @RequestParam(value = "startId", defaultValue = "0", required = false) Long startId,
             @RequestParam(value = "pageSize", defaultValue = "40", required = false) Integer pageSize) {
         List<Coach> list = coachService.findCoachByLevel(level, startId, pageSize);

@@ -20,7 +20,7 @@ public class MatchController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     public List<MatchInfo> findByCompetitionId(@PathVariable(value = "competitionId") Long competitionId,
-            @RequestParam(value = "teamId", required = false) Long teamId) {
+            @RequestParam(value = "teamId", required = true) Long teamId) {
         return matchService.findByCompetitionId(competitionId, teamId);
     }
 

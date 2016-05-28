@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper
-	namespace="com.lifeix.football.games.module.coach.mapper.CoachMapper">
+<mapper namespace="com.lifeix.football.games.module.coach.mapper.CoachMapper">
 
 
 	<!--封装coach表中保存的数据 -->
@@ -23,16 +22,21 @@
 		</trim>
 	</select>
 	<select id="findCoachByTeamId" resultType="coach">
-		SELECT
-		coach.*, team_coach.position
-		FROM
-		coach
-		JOIN
-		team_coach ON coach.id = team_coach.coachid
-		AND
-		teamid = #{teamId}
+		select * from
+		(
+			SELECT
+			coach.*, team_coach.teamid,team_coach.position,team_coach.createdate
+			FROM
+			coach
+			JOIN
+			team_coach ON coach.id = team_coach.coachid
+			AND
+			teamid = #{teamId} 
+			order by team_coach.createdate desc
+		) as t
+		group by t.teamid,t.position
 	</select>
-	
+
 	<select id="findCoachByCompetitionTeamId" resultType="coach">
 		SELECT
 		coach.*, competitionteam_coach.position

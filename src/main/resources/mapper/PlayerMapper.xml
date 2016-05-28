@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper
-	namespace="com.lifeix.football.games.module.player.mapper.PlayerMapper">
-	<resultMap type="com.lifeix.football.games.model.Player"
-		id="playerMap">
+<mapper namespace="com.lifeix.football.games.module.player.mapper.PlayerMapper">
+	<resultMap type="com.lifeix.football.games.model.Player" id="playerMap">
 		<id column="id" property="id" />
 		<result column="name" property="name" />
 		<result column="avatar" property="avatar" />
@@ -16,7 +14,6 @@
 			select="com.lifeix.football.games.module.player.mapper.PlayerNationalRecordMapper.findOne"></association>
 		<collection property="matches" column="id"
 			select="com.lifeix.football.games.module.player.mapper.PlayerNationalMatchMapper.findNationMathesByPlayerId"></collection>
-	
 	</resultMap>
 
 	<select id="findOne" resultMap="playerMap">
@@ -26,31 +23,53 @@
 
 
 	<resultMap type="com.lifeix.football.games.model.PlayerInfo"
-		id="playerInfoMap" extends="playerMap">
+		id="playerInfoMap">
+		<id column="id" property="id" />
+		<result column="name" property="name" />
+		<result column="avatar" property="avatar" />
+		<result column="height" property="height" />
+		<result column="weight" property="weight" />
+		<result column="country" property="country" />
+		<result column="birthday" property="birthday" />
+		<result column="birthplace" property="birthplace" />
+		<association property="record" column="id"
+			select="com.lifeix.football.games.module.player.mapper.PlayerNationalRecordMapper.findOne"></association>
+
 	</resultMap>
 
 	<select id="findPlayerByCompetitionTeamId" resultMap="playerInfoMap">
-		select nplayers.*, competitionteam_player.position from
+		select
+		nplayers.*, competitionteam_player.position from
 		(
-			SELECT * FROM player WHERE id IN
-			(
-				SELECT playerid FROM competitionteam_player WHERE competitionteamid = #{competitionTeamId}
-			)
-		)nplayers left join competitionteam_player on nplayers.id=competitionteam_player.playerid
-		 order by find_in_set( competitionteam_player.position,'gk,df,mf,fw')
+		SELECT * FROM player
+		WHERE id IN
+		(
+		SELECT playerid FROM competitionteam_player WHERE
+		competitionteamid =
+		#{competitionTeamId}
+		)
+		)nplayers left join
+		competitionteam_player on
+		nplayers.id=competitionteam_player.playerid
+		order by find_in_set( competitionteam_player.position,'gk,df,mf,fw')
 	</select>
-	
+
 	<select id="findPlayerByMatchTeamId" resultMap="playerInfoMap">
-		select nplayers.*, matchteam_player.position,matchteam_player.first from
+		select
+		nplayers.*, matchteam_player.position,matchteam_player.first from
 		(
-			SELECT * FROM player WHERE id IN
-			(
-				SELECT playerid FROM matchteam_player WHERE matchteamid = #{matchTeamId}
-			)
-		)nplayers left join matchteam_player on nplayers.id=matchteam_player.playerid
-		 order by 
-		 find_in_set( matchteam_player.first,'1,2'),
-		 find_in_set( matchteam_player.position,'gk,df,mf,fw')
+		SELECT * FROM player WHERE id IN
+		(
+		SELECT playerid FROM matchteam_player
+		WHERE matchteamid = #{matchTeamId}
+		)
+		)nplayers left join
+		matchteam_player on
+		nplayers.id=matchteam_player.playerid
+		order by
+		find_in_set( matchteam_player.first,'1,2'),
+		find_in_set(
+		matchteam_player.position,'gk,df,mf,fw')
 	</select>
 
 </mapper>
