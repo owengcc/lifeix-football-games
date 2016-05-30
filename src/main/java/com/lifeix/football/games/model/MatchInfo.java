@@ -18,11 +18,13 @@ public class MatchInfo {
 
     private String position = null;
 
-    private String state = null;
+    private Integer state = null;
 
     private String group = null;
 
     private CompetitionInfo competitionInfo = null;
+
+    private String introduce = null;
 
     public String getId() {
         return id;
@@ -80,11 +82,11 @@ public class MatchInfo {
         this.position = position;
     }
 
-    public String getState() {
+    public Integer getState() {
         return state;
     }
 
-    public void setState(String state) {
+    public void setState(Integer state) {
         this.state = state;
     }
 
@@ -102,6 +104,14 @@ public class MatchInfo {
 
     public void setCompetitionInfo(CompetitionInfo competitionInfo) {
         this.competitionInfo = competitionInfo;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
     }
 
 }

@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.lifeix.football.games.model.Match;
 import com.lifeix.football.games.model.MatchInfo;
 import com.lifeix.football.games.module.competition.service.MatchService;
 
@@ -24,4 +25,8 @@ public class MatchController {
         return matchService.findByCompetitionId(competitionId, teamId);
     }
 
+    @RequestMapping(value = "/{matchId}", method = RequestMethod.GET)
+    public Match findMatchTeam(@PathVariable(value = "matchId") Long matchId) {
+        return matchService.finfOne(matchId);
+    }
 }

@@ -9,4 +9,6 @@ public interface RefereeService {
     public Referee findOne(Long refereeId);
 
     public List<Referee> list(String level, Long startId, Integer limit);
+
+    public List<Referee> findByMathchId(Long matchId);
 }

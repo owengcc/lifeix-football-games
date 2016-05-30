@@ -45,4 +45,8 @@
 		JOIN competition_match ON matches.id = competition_match.matchid
 		and matches.competitionid=#{competitionId}
 	</select>
+	
+	<select id="findOne" resultMap="matchInfoMap">
+		select * from matches where id=#{matchId}
+	</select>
 </mapper>

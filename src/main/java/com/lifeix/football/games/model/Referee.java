@@ -32,6 +32,8 @@ public class Referee {
      */
     private Integer showNum = null;
 
+    private String position = null;
+
     public String getId() {
         return id;
     }
@@ -104,4 +106,11 @@ public class Referee {
         this.sex = sex;
     }
 
+    public String getPosition() {
+        return position;
+    }
+
+    public void setPosition(String position) {
+        this.position = position;
+    }
 }

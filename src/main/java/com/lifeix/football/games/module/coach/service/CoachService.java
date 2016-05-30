@@ -11,5 +11,11 @@ public interface CoachService {
 
     public List<Coach> findCoachByLevel(String level, Long startId, Integer pageSize);
 
+    /**
+     * key:队伍名称 value:队伍中的教练
+     * 
+     * @param teamCategoryId
+     * @return
+     */
     public Map<String, List<Coach>> findCoachByTeamCategory(Long teamCategoryId);
 }

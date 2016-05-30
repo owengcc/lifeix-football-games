@@ -2,13 +2,25 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.lifeix.football.games.module.referee.mapper.RefereeMapper">
 
-	
+
 	<!--封装referee表中保存的数据 -->
-	<select id="findOne"  resultType="com.lifeix.football.games.module.referee.po.RefereePO">
+	<select id="findOne"
+		resultType="referee">
 		select * from referee where id=#{id}
 	</select>
-	
-	<select id="list"  resultType="com.lifeix.football.games.module.referee.po.RefereePO">
-		select * from referee where level=#{0}  limit #{1}, #{2}
+
+	<select id="list"
+		resultType="referee">
+		select * from referee where level=#{0} limit #{1}, #{2}
+	</select>
+
+	<select id="findByMathchId"
+		resultType="referee">
+		SELECT
+		referee.*, match_referee.position
+		FROM
+		match_referee
+		JOIN referee ON match_referee.refereeid = referee.id
+		AND match_referee.matchid = #{0}
 	</select>
 </mapper>

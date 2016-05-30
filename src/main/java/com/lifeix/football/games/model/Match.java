@@ -23,7 +23,7 @@ public class Match {
 
     private String position = null;
 
-    private CompetitionInfo competion = null;
+    private CompetitionInfo competitionInfo = null;
 
     private Referee chiefReferee = null;
 
@@ -86,12 +86,12 @@ public class Match {
         this.awayScore = awayScore;
     }
 
-    public CompetitionInfo getCompetion() {
-        return competion;
+    public CompetitionInfo getCompetitionInfo() {
+        return competitionInfo;
     }
 
-    public void setCompetion(CompetitionInfo competion) {
-        this.competion = competion;
+    public void setCompetitionInfo(CompetitionInfo competitionInfo) {
+        this.competitionInfo = competitionInfo;
     }
 
     public Referee getChiefReferee() {

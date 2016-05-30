@@ -10,4 +10,5 @@ public interface MatchService {
     public Match finfOne(Long id);
 
     public List<MatchInfo> findByCompetitionId(Long competitionId, Long teamId);
+
 }
