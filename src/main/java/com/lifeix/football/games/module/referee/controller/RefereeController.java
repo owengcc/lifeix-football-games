@@ -20,7 +20,7 @@ public class RefereeController {
     private RefereeService refereeService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
-    public List<Referee> list(@RequestParam(value = "level", required = true) String level,
+    public List<Referee> getReferees(@RequestParam(value = "level", required = true) String level,
             @RequestParam(value = "startId", defaultValue = "0", required = false) Long startId,
             @RequestParam(value = "pageSize", defaultValue = "40", required = false) Integer pageSize) {
         List<Referee> list = refereeService.list(level, startId, pageSize);
@@ -28,7 +28,7 @@ public class RefereeController {
     }
 
     @RequestMapping(value = "/{refereeId}", method = RequestMethod.GET)
-    public Referee findOne(@PathVariable(value = "refereeId") Long id) {
+    public Referee findReferee(@PathVariable(value = "refereeId") Long id) {
         return refereeService.findOne(id);
     }
 }

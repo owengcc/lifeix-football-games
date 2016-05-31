@@ -16,7 +16,7 @@ public class StaffController {
     private StaffService staffService;
 
     @RequestMapping(value = "/{staffId}", method = RequestMethod.GET)
-    public Staff findOne(@PathVariable(value = "staffId") Long id) {
+    public Staff findStaff(@PathVariable(value = "staffId") Long id) {
         return staffService.findOne(id);
     }
 }

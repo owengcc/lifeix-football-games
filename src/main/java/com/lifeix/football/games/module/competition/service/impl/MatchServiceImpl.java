@@ -78,7 +78,7 @@ public class MatchServiceImpl implements MatchService {
     }
 
     @Override
-    public List<MatchInfo> findByCompetitionId(Long competitionId, Long teamId) {
+    public List<MatchInfo> findByCompetitionIdAndTeamId(Long competitionId, Long teamId) {
         List<Long> matchTeamIds = new ArrayList<Long>();
         matchTeamIds = matchTeamMapper.findMatchTeamIdsByTeamId(teamId);
         List<MatchInfo> lists = matchMapper.findByCompetitionIdAndMatchTeamIds(competitionId, matchTeamIds);

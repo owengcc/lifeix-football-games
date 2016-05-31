@@ -23,6 +23,9 @@ public class Match {
 
     private Date startTime = null;
 
+    /**
+     * 比赛举办地
+     */
     private String position = null;
 
     private CompetitionInfo competitionInfo = null;

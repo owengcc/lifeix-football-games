@@ -18,7 +18,7 @@ public class PlayerController {
 
     @RequestMapping(value = "/{playerId}", method = RequestMethod.GET)
     @Cacheable(value = "players", keyGenerator = "wiselyKeyGenerator")
-    public Player findOne(@PathVariable(value = "playerId") Long playerId) {
+    public Player getPlayer(@PathVariable(value = "playerId") Long playerId) {
         return playerService.findOne(playerId);
     }
 

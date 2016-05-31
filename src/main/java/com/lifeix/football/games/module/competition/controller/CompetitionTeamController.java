@@ -16,7 +16,7 @@ public class CompetitionTeamController {
     private CompetitionTeamService competitionTeamService;
 
     @RequestMapping(value = "/{teamId}/competitionTeam", method = RequestMethod.GET)
-    public CompetitionTeam findOne(@PathVariable(value = "competitionId") Long competitionId,
+    public CompetitionTeam findCompetitionTeam(@PathVariable(value = "competitionId") Long competitionId,
             @PathVariable(value = "teamId") Long teamId) {
         return competitionTeamService.findOne(competitionId, teamId);
     }
