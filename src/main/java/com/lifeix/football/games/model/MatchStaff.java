@@ -2,13 +2,7 @@ package com.lifeix.football.games.model;
 
 import java.util.Date;
 
-/**
- * 球队工作人员
- * 
- * @author gcc
- */
-public class Staff {
-
+public class MatchStaff {
     private Long id;
 
     private String name;
@@ -24,11 +18,6 @@ public class Staff {
     private String birthPlace;
 
     private String introduce;
-
-    /**
-     * 所属球队
-     */
-    private TeamInfo team;
 
     public Long getId() {
         return id;
@@ -46,6 +35,14 @@ public class Staff {
         this.name = name;
     }
 
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public String getAvatar() {
         return avatar;
     }
@@ -56,14 +53,6 @@ public class Staff {
 
     public String getPosition() {
         return position;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
     }
 
     public void setPosition(String position) {
@@ -92,14 +81,6 @@ public class Staff {
 
     public void setIntroduce(String introduce) {
         this.introduce = introduce;
-    }
-
-    public TeamInfo getTeam() {
-        return team;
-    }
-
-    public void setTeam(TeamInfo team) {
-        this.team = team;
     }
 
 }

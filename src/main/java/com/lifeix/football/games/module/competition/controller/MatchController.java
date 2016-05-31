@@ -27,6 +27,6 @@ public class MatchController {
 
     @RequestMapping(value = "/{matchId}", method = RequestMethod.GET)
     public Match findMatchTeam(@PathVariable(value = "matchId") Long matchId) {
-        return matchService.finfOne(matchId);
+        return matchService.findOne(matchId);
     }
 }

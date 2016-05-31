@@ -37,6 +37,8 @@ public class PlayerInfo {
      */
     private PlayerNationalRecord record;
 
+    private Integer jeserysNum;
+
     public String getId() {
         return id;
     }
@@ -123,6 +125,14 @@ public class PlayerInfo {
 
     public void setFirst(Integer first) {
         this.first = first;
+    }
+
+    public Integer getJeserysNum() {
+        return jeserysNum;
+    }
+
+    public void setJeserysNum(Integer jeserysNum) {
+        this.jeserysNum = jeserysNum;
     }
 
 }

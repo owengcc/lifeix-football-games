@@ -19,6 +19,8 @@ public class CoachInfo {
 
     private String level;
 
+    private String country;
+
     /**
      * 生日
      */
@@ -75,6 +77,14 @@ public class CoachInfo {
 
     public void setBirthplace(String birthplace) {
         this.birthplace = birthplace;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
     }
 
 }

@@ -7,7 +7,7 @@ import com.lifeix.football.games.model.MatchInfo;
 
 public interface MatchService {
 
-    public Match finfOne(Long id);
+    public Match findOne(Long id);
 
     public List<MatchInfo> findByCompetitionId(Long competitionId, Long teamId);
 

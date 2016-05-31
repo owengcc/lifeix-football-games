@@ -51,17 +51,16 @@ public class MatchTeamServiceImpl implements MatchTeamService {
         }
         // 教练
         List<Coach> coaches = coachMapper.findCoachByMatchTeamId(matchTeamId);
+        List<Coach> assistantCoaches = new ArrayList<Coach>();
         for (Coach coach : coaches) {
             if ("chief".equals(coach.getPosition().trim())) {
                 matchTeam.setChiefCoach(coach);
             }
             if ("assistant".equals(coach.getPosition().trim())) {
-                matchTeam.setAssistantCoach(coach);
-            }
-            if ("gk".equals(coach.getPosition().trim())) {
-                matchTeam.setGkCoach(coach);
+                assistantCoaches.add(coach);
             }
         }
+        matchTeam.setAssistantCoach(assistantCoaches);
         // 球员
         List<PlayerInfo> firstPlayers = new ArrayList<PlayerInfo>();
         List<PlayerInfo> substitutionPlayers = new ArrayList<PlayerInfo>();

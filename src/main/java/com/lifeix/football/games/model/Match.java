@@ -19,6 +19,8 @@ public class Match {
 
     private Integer awayScore = 0;
 
+    private Date startDate = null;
+
     private Date startTime = null;
 
     private String position = null;
@@ -32,9 +34,31 @@ public class Match {
     private Referee fourthReferee = null;
 
     /**
+     * 比赛监督
+     */
+    private MatchStaff bsjd;
+
+    /**
+     * 裁判监督
+     */
+    private MatchStaff cpjd;
+
+    /**
      * 0:未开始 1：已结束
      */
     private Integer state = null;
+
+    /**
+     * 分组信息
+     */
+    private String group = null;
+
+    /**
+     * 
+     */
+    private String stage = null;
+
+    private Court court = null;
 
     private String introduce = null;
 
@@ -134,12 +158,60 @@ public class Match {
         this.state = state;
     }
 
+    public String getGroup() {
+        return group;
+    }
+
+    public void setGroup(String group) {
+        this.group = group;
+    }
+
+    public String getStage() {
+        return stage;
+    }
+
+    public void setStage(String stage) {
+        this.stage = stage;
+    }
+
     public String getIntroduce() {
         return introduce;
     }
 
     public void setIntroduce(String introduce) {
         this.introduce = introduce;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Court getCourt() {
+        return court;
+    }
+
+    public void setCourt(Court court) {
+        this.court = court;
+    }
+
+    public MatchStaff getBsjd() {
+        return bsjd;
+    }
+
+    public void setBsjd(MatchStaff bsjd) {
+        this.bsjd = bsjd;
+    }
+
+    public MatchStaff getCpjd() {
+        return cpjd;
+    }
+
+    public void setCpjd(MatchStaff cpjd) {
+        this.cpjd = cpjd;
     }
 
 }

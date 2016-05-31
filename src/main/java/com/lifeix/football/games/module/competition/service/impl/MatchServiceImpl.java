@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 
 import com.lifeix.football.games.model.Match;
 import com.lifeix.football.games.model.MatchInfo;
+import com.lifeix.football.games.model.MatchStaff;
 import com.lifeix.football.games.model.MatchTeam;
 import com.lifeix.football.games.model.Referee;
 import com.lifeix.football.games.module.competition.mapper.MatchMapper;
@@ -16,6 +17,7 @@ import com.lifeix.football.games.module.competition.mapper.MatchTeamMapper;
 import com.lifeix.football.games.module.competition.service.MatchService;
 import com.lifeix.football.games.module.competition.service.MatchTeamService;
 import com.lifeix.football.games.module.referee.service.RefereeService;
+import com.lifeix.football.games.module.staff.mapper.MatchStaffMapper;
 
 @Service
 public class MatchServiceImpl implements MatchService {
@@ -32,8 +34,11 @@ public class MatchServiceImpl implements MatchService {
     @Autowired
     private MatchTeamService matchTeamService;
 
+    @Autowired
+    private MatchStaffMapper matchStaffMapper;
+
     @Override
-    public Match finfOne(Long id) {
+    public Match findOne(Long id) {
         Match match = new Match();
         MatchInfo matchInfo = matchMapper.findOne(id);
         // 球队
@@ -59,6 +64,16 @@ public class MatchServiceImpl implements MatchService {
             }
         }
         match.setSideReferees(sideReferees);
+        // 比赛工作人员
+        List<MatchStaff> matchStaffs = matchStaffMapper.findByMatchId(id);
+        for (MatchStaff matchStaff : matchStaffs) {
+            if ("bsjd".equals(matchStaff.getPosition())) {
+                match.setBsjd(matchStaff);
+            }
+            if ("cpjd".equals(matchStaff.getPosition())) {
+                match.setCpjd(matchStaff);
+            }
+        }
         return match;
     }
 

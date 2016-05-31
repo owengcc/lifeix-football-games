@@ -28,17 +28,7 @@ public class MatchTeam {
     /**
      * 助理教练
      */
-    private Coach assistantCoach = null;
-
-    /**
-     * 门将教练
-     */
-    private Coach gkCoach = null;
-
-    /**
-     * 体能教练
-     */
-    private Coach physicalCoach = null;
+    private List<Coach> assistantCoach = new ArrayList<Coach>();
 
     /**
      * 领队
@@ -121,28 +111,12 @@ public class MatchTeam {
         this.chiefCoach = chiefCoach;
     }
 
-    public Coach getAssistantCoach() {
+    public List<Coach> getAssistantCoach() {
         return assistantCoach;
     }
 
-    public void setAssistantCoach(Coach assistantCoach) {
+    public void setAssistantCoach(List<Coach> assistantCoach) {
         this.assistantCoach = assistantCoach;
-    }
-
-    public Coach getGkCoach() {
-        return gkCoach;
-    }
-
-    public void setGkCoach(Coach gkCoach) {
-        this.gkCoach = gkCoach;
-    }
-
-    public Coach getPhysicalCoach() {
-        return physicalCoach;
-    }
-
-    public void setPhysicalCoach(Coach physicalCoach) {
-        this.physicalCoach = physicalCoach;
     }
 
     public Staff getTeamLeader() {

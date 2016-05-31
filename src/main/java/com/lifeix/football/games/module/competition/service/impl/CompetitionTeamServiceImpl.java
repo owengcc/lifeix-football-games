@@ -1,5 +1,6 @@
 package com.lifeix.football.games.module.competition.service.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,17 +49,16 @@ public class CompetitionTeamServiceImpl implements CompetitionTeamService {
         }
         // 教练
         List<Coach> coaches = coachMapper.findCoachByCompetitionTeamId(competitionTeamId);
+        List<Coach> assistantCoaches = new ArrayList<Coach>();
         for (Coach coach : coaches) {
             if ("chief".equals(coach.getPosition().trim())) {
                 competitionTeam.setChiefCoach(coach);
             }
             if ("assistant".equals(coach.getPosition().trim())) {
-                competitionTeam.setAssistantCoach(coach);
-            }
-            if ("gk".equals(coach.getPosition().trim())) {
-                competitionTeam.setGkCoach(coach);
+                assistantCoaches.add(coach);
             }
         }
+        competitionTeam.setAssistantCoach(assistantCoaches);
         // 球员
         List<PlayerInfo> players = playerMapper.findPlayerByCompetitionTeamId(competitionTeamId);
         competitionTeam.setPlayers(players);

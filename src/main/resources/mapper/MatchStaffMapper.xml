@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.lifeix.football.games.module.staff.mapper.MatchStaffMapper">
+
+	<select id="findByMatchId" resultType="matchStaff">
+		SELECT t.position, matchstaff.*
+		FROM
+		(
+			SELECT * FROM matches_matchstaff WHERE matchid = #{0}
+		) t
+		JOIN matchstaff ON t.matchstaffid = matchstaff.id
+	</select>
+</mapper>

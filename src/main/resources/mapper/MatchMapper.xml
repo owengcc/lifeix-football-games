@@ -10,17 +10,20 @@
 		<result column="awayScore" property="awayScore" />
 		<result column="startTime" property="startTime" />
 		<result column="position" property="position" />
+		<result column="group" property="group" />
+		<result column="stage" property="stage" />
 		<result column="state" property="state" />
 		<association property="competitionInfo" column="competitionid" select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
 		<association property="hostTeam" column="hostteam"
 			select="com.lifeix.football.games.module.competition.mapper.MatchTeamMapper.findMatchTeamInfo"></association>
 		<association property="awayTeam" column="awayteam"
 			select="com.lifeix.football.games.module.competition.mapper.MatchTeamMapper.findMatchTeamInfo"></association>
+		<association property="court" column="courtid" select="com.lifeix.football.games.module.court.mapper.CourtMapper.findOne"></association>
 	</resultMap>
 
 
 	<select id="findByCompetitionIdAndMatchTeamIds" resultMap="matchInfoMap">
-		SELECT matches.*,competition_match.`group`
+		SELECT matches.*,competition_match.`group`,competition_match.stage
 		FROM matches
 		JOIN competition_match ON matches.id = competition_match.matchid
 		and matches.competitionid=#{0}
@@ -40,13 +43,16 @@
 	</select>
 
 	<select id="findByCompetitionId" resultMap="matchInfoMap">
-		SELECT matches.*,competition_match.`group`
+		SELECT matches.*,competition_match.`group`,competition_match.stage
 		FROM matches
 		JOIN competition_match ON matches.id = competition_match.matchid
 		and matches.competitionid=#{competitionId}
 	</select>
 	
 	<select id="findOne" resultMap="matchInfoMap">
-		select * from matches where id=#{matchId}
+		SELECT matches.*,competition_match.`group`,competition_match.stage
+		FROM matches
+		JOIN competition_match ON matches.id = competition_match.matchid
+		and matches.id=#{matchId}
 	</select>
 </mapper>

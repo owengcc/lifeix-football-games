@@ -39,7 +39,7 @@
 
 	<select id="findPlayerByCompetitionTeamId" resultMap="playerInfoMap">
 		select
-		nplayers.*, competitionteam_player.position from
+		nplayers.*, matchteam_player.position,matchteam_player.first,matchteam_player.jeserysnum from
 		(
 		SELECT * FROM player
 		WHERE id IN
@@ -56,7 +56,7 @@
 
 	<select id="findPlayerByMatchTeamId" resultMap="playerInfoMap">
 		select
-		nplayers.*, matchteam_player.position,matchteam_player.first from
+		nplayers.*, matchteam_player.position,matchteam_player.first,matchteam_player.jeserysnum from
 		(
 		SELECT * FROM player WHERE id IN
 		(
