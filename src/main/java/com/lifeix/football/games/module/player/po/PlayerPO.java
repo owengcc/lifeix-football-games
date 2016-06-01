@@ -13,6 +13,8 @@ public class PlayerPO {
 
     private String name = null;
 
+    private String englishName = null;
+
     private String avatar = null;
 
     private String sex = null;
@@ -26,6 +28,8 @@ public class PlayerPO {
     private String birthplace = null;
 
     private String country = null;
+
+    private String introduce = null;
 
     public String getId() {
         return id;
@@ -41,6 +45,14 @@ public class PlayerPO {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEnglishName() {
+        return englishName;
+    }
+
+    public void setEnglishName(String englishName) {
+        this.englishName = englishName;
     }
 
     public String getAvatar() {
@@ -97,6 +109,14 @@ public class PlayerPO {
 
     public void setCountry(String country) {
         this.country = country;
+    }
+
+    public String getIntroduce() {
+        return introduce;
+    }
+
+    public void setIntroduce(String introduce) {
+        this.introduce = introduce;
     }
 
 }

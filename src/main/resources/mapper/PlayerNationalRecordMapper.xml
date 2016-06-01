@@ -2,7 +2,6 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper
 	namespace="com.lifeix.football.games.module.player.mapper.PlayerNationalRecordMapper">
-	<!--封装coach表中保存的数据 -->
 	<select id="findOne" resultType="playerNationalRecord">
 		select * from player_nationalrecord where playerid=#{id}
 	</select>

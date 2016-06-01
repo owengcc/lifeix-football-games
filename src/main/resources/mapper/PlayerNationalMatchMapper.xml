@@ -6,6 +6,8 @@
 	<resultMap type="playerNationalMatch" id="playerNationalMatchMap">
 		<id property="id" column="id"/>
 		<result property="playerId" column="playerid"/>
+		<result property="hostTeam" column="hostTeam"/>
+		<result property="awayTeam" column="awayTeam"/>
 		<result property="hostScore" column="hostscore"/>
 		<result property="awayScore" column="awayscore"/>
 		<result property="first" column="first"/>
@@ -13,8 +15,6 @@
 		<result property="goal" column="goal"/>
 		<result property="booking" column="booking"/>
 		<result property="dismissal" column="dismissal"/>
-		<association property="hostTeam" column="hostteam" select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
-		<association property="awayTeam" column="awayteam" select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
 		<association property="competition" column="competitionid" select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
 	</resultMap>
 
@@ -22,4 +22,12 @@
 	<select id="findNationMathesByPlayerId" resultMap="playerNationalMatchMap">
 		select * from player_nationalmatch where playerid=#{playerId}
 	</select>
+	
+	
+	<insert id="insertOne" useGeneratedKeys="true" keyProperty="id" parameterType="com.lifeix.football.games.module.player.po.PlayerNationalMatchPO">
+		INSERT INTO `player_nationalmatch` (`playerid`, `competitionid`, `hostteam`, `awayteam`, `hostscore`, `awayscore`, `first`, `showtime`, `goal`, `assists`, `booking`, `dismissal`, `matchdate`) 
+		VALUES ( #{playerId}, #{competitionId}, #{hostTeam}, #{awayTeam}, #{hostScore}, #{awayScore}, #{first}, #{showTime}, #{goal}, #{assists}, #{booking}, #{dismissal}, #{matchDate});
+	</insert>
+	
+	
 </mapper>

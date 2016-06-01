@@ -30,7 +30,7 @@ public class PlayerServiceImpl implements PlayerService {
         if (teamInfos != null && teamInfos.size() > 0) {
             for (TeamInfo teamInfo : teamInfos) {
                 String name = teamInfo.getTeamCategory().getName();
-                if (name.contains("国家")) {
+                if (name.contains("龙") || name.contains("国家")) {
                     player.setNationTeam(teamInfo);
                 } else {
                     clubInfos.add(teamInfo);

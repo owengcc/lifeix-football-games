@@ -8,9 +8,9 @@ public class PlayerNationalMatch {
 
     private CompetitionInfo competition;
 
-    private TeamInfo hostTeam;
+    private String hostTeam;
 
-    private TeamInfo awayTeam;
+    private String awayTeam;
 
     private Integer hostScore;
 
@@ -21,6 +21,8 @@ public class PlayerNationalMatch {
     private Integer showTime;
 
     private Integer goal;
+
+    private Integer assists;
 
     private Integer booking;
 
@@ -50,20 +52,28 @@ public class PlayerNationalMatch {
         this.competition = competition;
     }
 
-    public TeamInfo getHostTeam() {
+    public String getHostTeam() {
         return hostTeam;
     }
 
-    public void setHostTeam(TeamInfo hostTeam) {
+    public void setHostTeam(String hostTeam) {
         this.hostTeam = hostTeam;
     }
 
-    public TeamInfo getAwayTeam() {
+    public String getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(TeamInfo awayTeam) {
+    public void setAwayTeam(String awayTeam) {
         this.awayTeam = awayTeam;
+    }
+
+    public Integer getAssists() {
+        return assists;
+    }
+
+    public void setAssists(Integer assists) {
+        this.assists = assists;
     }
 
     public Integer getHostScore() {

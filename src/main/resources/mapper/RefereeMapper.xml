@@ -4,14 +4,17 @@
 
 
 	<!--封装referee表中保存的数据 -->
-	<select id="findOne"
-		resultType="referee">
+	<select id="findOne" resultType="referee">
 		select * from referee where id=#{id}
 	</select>
 
-	<select id="list"
-		resultType="referee">
-		select * from referee where level=#{0} limit #{1}, #{2}
+	<select id="list" resultType="referee">
+		select * from referee where level=#{0} 
+		 order by 
+		 find_in_set(category,'11人制,5人制,沙滩足球'),
+		 find_in_set(sex,'男，女'),
+		 find_in_set(function,'chief,assistant')
+		limit #{1}, #{2}
 	</select>
 
 	<select id="findByMathchId"

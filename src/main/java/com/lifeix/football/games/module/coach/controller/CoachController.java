@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ public class CoachController {
     private CoachService coachService;
 
     @RequestMapping(value = "/{coachId}", method = RequestMethod.GET)
+    @Cacheable(value = "coach", keyGenerator = "wiselyKeyGenerator")
     public Coach findOne(@PathVariable(value = "coachId") Long id) {
         return coachService.findOne(id);
     }
@@ -34,6 +36,7 @@ public class CoachController {
     }
 
     @RequestMapping(value = "/teamcategory/{teamCategoryId}", method = RequestMethod.GET)
+    @Cacheable(value = "coaches", keyGenerator = "wiselyKeyGenerator")
     public Map<String, List<Coach>> findCoachByTeamCategory(
             @PathVariable(value = "teamCategoryId") Long teamCategoryId) throws JsonProcessingException {
         Map<String, List<Coach>> map = coachService.findCoachByTeamCategory(teamCategoryId);

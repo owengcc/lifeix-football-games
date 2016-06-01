@@ -25,6 +25,11 @@ public class PlayerNationalRecord {
     private Integer goals = null;
 
     /**
+     * 助攻数
+     */
+    private Integer assists = null;
+
+    /**
      * 黄牌数
      */
     private Integer bookings = null;
@@ -89,6 +94,14 @@ public class PlayerNationalRecord {
 
     public void setDismissals(Integer dismissals) {
         this.dismissals = dismissals;
+    }
+
+    public Integer getAssists() {
+        return assists;
+    }
+
+    public void setAssists(Integer assists) {
+        this.assists = assists;
     }
 
 }

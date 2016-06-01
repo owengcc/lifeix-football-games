@@ -1,6 +1,6 @@
 package com.lifeix.football.games.module.player.po;
 
-import com.lifeix.football.games.model.TeamInfo;
+import java.util.Date;
 
 public class PlayerNationalMatchPO {
 
@@ -10,9 +10,9 @@ public class PlayerNationalMatchPO {
 
     private Long competitionId;
 
-    private TeamInfo hostTeam;
+    private String hostTeam;
 
-    private TeamInfo awayTeam;
+    private String awayTeam;
 
     private Integer hostScore;
 
@@ -24,9 +24,13 @@ public class PlayerNationalMatchPO {
 
     private Integer goal;
 
+    private Integer assists;
+
     private Integer booking;
 
     private Integer dismissal;
+
+    private Date matchDate;
 
     public Long getId() {
         return id;
@@ -52,19 +56,19 @@ public class PlayerNationalMatchPO {
         this.competitionId = competitionId;
     }
 
-    public TeamInfo getHostTeam() {
+    public String getHostTeam() {
         return hostTeam;
     }
 
-    public void setHostTeam(TeamInfo hostTeam) {
+    public void setHostTeam(String hostTeam) {
         this.hostTeam = hostTeam;
     }
 
-    public TeamInfo getAwayTeam() {
+    public String getAwayTeam() {
         return awayTeam;
     }
 
-    public void setAwayTeam(TeamInfo awayTeam) {
+    public void setAwayTeam(String awayTeam) {
         this.awayTeam = awayTeam;
     }
 
@@ -122,6 +126,22 @@ public class PlayerNationalMatchPO {
 
     public void setDismissal(Integer dismissal) {
         this.dismissal = dismissal;
+    }
+
+    public Date getMatchDate() {
+        return matchDate;
+    }
+
+    public void setMatchDate(Date matchDate) {
+        this.matchDate = matchDate;
+    }
+
+    public Integer getAssists() {
+        return assists;
+    }
+
+    public void setAssists(Integer assists) {
+        this.assists = assists;
     }
 
 }

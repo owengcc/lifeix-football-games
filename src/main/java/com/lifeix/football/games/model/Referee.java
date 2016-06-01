@@ -32,7 +32,20 @@ public class Referee {
      */
     private Integer showNum = null;
 
+    /**
+     * 职能，主裁判、助理裁判
+     */
+    private String function = null;
+
+    /**
+     * 比赛场上职能，主裁判，边裁，第四官员
+     */
     private String position = null;
+
+    /**
+     * 11人制，5人制，沙滩
+     */
+    private String category = null;
 
     public String getId() {
         return id;
@@ -106,6 +119,14 @@ public class Referee {
         this.sex = sex;
     }
 
+    public String getFunction() {
+        return function;
+    }
+
+    public void setFunction(String function) {
+        this.function = function;
+    }
+
     public String getPosition() {
         return position;
     }
@@ -113,4 +134,13 @@ public class Referee {
     public void setPosition(String position) {
         this.position = position;
     }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
 }

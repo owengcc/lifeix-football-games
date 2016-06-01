@@ -52,11 +52,6 @@ public class Player {
      */
     private List<PlayerNationalMatch> matches = new ArrayList<PlayerNationalMatch>();
 
-    /**
-     * 参加过的国家队赛事
-     */
-    private List<CompetitionInfo> competitions = new ArrayList<CompetitionInfo>();
-
     public String getId() {
         return id;
     }
@@ -151,14 +146,6 @@ public class Player {
 
     public void setMatches(List<PlayerNationalMatch> matches) {
         this.matches = matches;
-    }
-
-    public List<CompetitionInfo> getCompetitions() {
-        return competitions;
-    }
-
-    public void setCompetitions(List<CompetitionInfo> competitions) {
-        this.competitions = competitions;
     }
 
     public PlayerNationalRecord getRecord() {

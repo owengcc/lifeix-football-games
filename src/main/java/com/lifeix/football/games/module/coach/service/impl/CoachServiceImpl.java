@@ -58,10 +58,11 @@ public class CoachServiceImpl implements CoachService {
         List<TeamCategory> list = teamCategoryMapper.findOnlyLeafChildren(teamCategoryId);
         for (TeamCategory category : list) {
             Long categoryId = category.getId();
-            TeamInfo teamInfo = teamMappper.findTeamsByCategoryId(categoryId).get(0);
-            if (teamInfo == null) {
+            List<TeamInfo> teamInfos = teamMappper.findTeamsByCategoryId(categoryId);
+            if (teamInfos.size() == 0) {
                 continue;
             }
+            TeamInfo teamInfo = teamInfos.get(0);
             List<Coach> coches = coachMapper.findCoachByTeamId(teamInfo.getId());
             map.put(teamInfo.getName(), coches);
         }
