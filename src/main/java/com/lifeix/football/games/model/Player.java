@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * 球员详情显示的信息
  * 
  * @author gcc
  */
+@JsonInclude(Include.NON_EMPTY)
 public class Player {
 
     private String id = null;

@@ -2,6 +2,10 @@ package com.lifeix.football.games.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
+@JsonInclude(Include.NON_EMPTY)
 public class CompetitionInfo {
     private String id = null;
 

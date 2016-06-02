@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * 教练详情页显示的信息
  * 
  * @author gcc
  */
+@JsonInclude(Include.NON_EMPTY)
 public class Coach {
     private String id = null;
 

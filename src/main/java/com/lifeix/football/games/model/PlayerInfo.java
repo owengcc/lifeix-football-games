@@ -2,11 +2,15 @@ package com.lifeix.football.games.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * 列表页显示的球员信息
  * 
  * @author gcc
  */
+@JsonInclude(Include.NON_EMPTY)
 public class PlayerInfo {
 
     private String id = null;

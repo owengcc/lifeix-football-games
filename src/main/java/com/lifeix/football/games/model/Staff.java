@@ -2,11 +2,15 @@ package com.lifeix.football.games.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * 球队工作人员
  * 
  * @author gcc
  */
+@JsonInclude(Include.NON_EMPTY)
 public class Staff {
 
     private Long id;

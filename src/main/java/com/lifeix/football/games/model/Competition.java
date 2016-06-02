@@ -4,11 +4,15 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * 赛事
  * 
  * @author gcc
  */
+@JsonInclude(Include.NON_EMPTY)
 public class Competition {
 
     private String id = null;

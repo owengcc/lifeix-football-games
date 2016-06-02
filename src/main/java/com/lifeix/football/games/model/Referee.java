@@ -2,11 +2,15 @@ package com.lifeix.football.games.model;
 
 import java.util.Date;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
+import com.fasterxml.jackson.annotation.JsonInclude.Include;
+
 /**
  * 裁判
  * 
  * @author gcc
  */
+@JsonInclude(Include.NON_EMPTY)
 public class Referee {
     private String id = null;
 
