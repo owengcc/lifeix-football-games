@@ -24,8 +24,7 @@
 		where id=#{id}
 	</select>
 	
-	<resultMap type="competitionTeamInfo"
-		id="competitionTeamInfoMap">
+	<resultMap type="competitionTeamInfo" id="competitionTeamInfoMap">
 		<id column="id" property="id" />
 		<result column="introduce" property="introduce" />
 		<result column="setupDate" property="setupDate" />

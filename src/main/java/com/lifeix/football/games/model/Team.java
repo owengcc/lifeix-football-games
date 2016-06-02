@@ -45,8 +45,6 @@ public class Team {
      */
     private TeamCategory teamCategory;
 
-    private Jerseys jerseys;
-
     public Coach getChiefCoach() {
         return chiefCoach;
     }
@@ -117,14 +115,6 @@ public class Team {
 
     public void setTeamCategory(TeamCategory teamCategory) {
         this.teamCategory = teamCategory;
-    }
-
-    public Jerseys getJerseys() {
-        return jerseys;
-    }
-
-    public void setJerseys(Jerseys jerseys) {
-        this.jerseys = jerseys;
     }
 
 }

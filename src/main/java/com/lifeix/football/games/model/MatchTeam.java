@@ -41,6 +41,11 @@ public class MatchTeam {
     private Staff doctor;
 
     /**
+     * 比赛球衣
+     */
+    private MatchTeamJerseys matchTeamJerseys;
+
+    /**
      * 球员信息
      */
     private List<PlayerInfo> firstPlayers = new ArrayList<PlayerInfo>();
@@ -149,6 +154,14 @@ public class MatchTeam {
 
     public void setSubstitutionPlayers(List<PlayerInfo> substitutionPlayers) {
         this.substitutionPlayers = substitutionPlayers;
+    }
+
+    public MatchTeamJerseys getMatchTeamJerseys() {
+        return matchTeamJerseys;
+    }
+
+    public void setMatchTeamJerseys(MatchTeamJerseys matchTeamJerseys) {
+        this.matchTeamJerseys = matchTeamJerseys;
     }
 
 }

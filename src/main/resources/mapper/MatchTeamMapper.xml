@@ -9,6 +9,7 @@
 		<association property="competitionTeamInfo" column="competitionteamid" select="com.lifeix.football.games.module.competition.mapper.CompetitionTeamMapper.findById"></association>
 		<association property="competitionInfo" column="competitionid" select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
 		<association property="teamInfo" column="teamid" select="com.lifeix.football.games.module.team.mapper.TeamMapper.findSimpleOne"></association>
+		<association property="matchTeamJerseys" column="id" select="com.lifeix.football.games.module.competition.mapper.MatchTeamJerseysMapper.findOne"></association>
 	</resultMap>
 	
 	<select id="findTeams"  resultMap="matchTeamMap">

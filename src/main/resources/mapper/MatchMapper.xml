@@ -3,8 +3,7 @@
 <mapper
 	namespace="com.lifeix.football.games.module.competition.mapper.MatchMapper">
 
-	<resultMap type="com.lifeix.football.games.model.MatchInfo"
-		id="matchInfoMap">
+	<resultMap type="com.lifeix.football.games.model.MatchInfo" id="matchInfoMap">
 		<id column="id" property="id" />
 		<result column="hostScore" property="hostScore" />
 		<result column="awayScore" property="awayScore" />

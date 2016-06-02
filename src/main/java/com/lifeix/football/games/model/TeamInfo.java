@@ -11,8 +11,6 @@ public class TeamInfo {
 
     private TeamCategory teamCategory;
 
-    private Jerseys jerseys;
-
     public String getFlag() {
         return flag;
     }
@@ -51,14 +49,6 @@ public class TeamInfo {
 
     public void setTeamCategory(TeamCategory teamCategory) {
         this.teamCategory = teamCategory;
-    }
-
-    public Jerseys getJerseys() {
-        return jerseys;
-    }
-
-    public void setJerseys(Jerseys jerseys) {
-        this.jerseys = jerseys;
     }
 
 }

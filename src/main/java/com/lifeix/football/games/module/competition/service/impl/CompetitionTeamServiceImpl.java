@@ -40,10 +40,10 @@ public class CompetitionTeamServiceImpl implements CompetitionTeamService {
         // 职员
         List<Staff> staffs = staffMapper.findStaffByCompetitionTeamId(competitionTeamId);
         for (Staff staff : staffs) {
-            if ("teamleader".equals(staff.getPosition())) {
+            if ("领队".equals(staff.getPosition())) {
                 competitionTeam.setTeamLeader(staff);
             }
-            if ("doctor".equals(staff.getPosition())) {
+            if ("队医".equals(staff.getPosition())) {
                 competitionTeam.setDoctor(staff);
             }
         }
@@ -51,10 +51,10 @@ public class CompetitionTeamServiceImpl implements CompetitionTeamService {
         List<Coach> coaches = coachMapper.findCoachByCompetitionTeamId(competitionTeamId);
         List<Coach> assistantCoaches = new ArrayList<Coach>();
         for (Coach coach : coaches) {
-            if ("chief".equals(coach.getPosition().trim())) {
+            if ("主教练".equals(coach.getPosition().trim())) {
                 competitionTeam.setChiefCoach(coach);
             }
-            if ("assistant".equals(coach.getPosition().trim())) {
+            if ("助理教练".equals(coach.getPosition().trim())) {
                 assistantCoaches.add(coach);
             }
         }

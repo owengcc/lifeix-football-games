@@ -6,7 +6,6 @@
 		<id column="id" property="id" />
 		<result column="name" property="name" />
 		<result column="fid" property="fId" />
-		<collection property="categories" column="id" ofType="teamCategory" select="findChildren"></collection>
 	</resultMap>
 
 	<select id="findOne" resultMap="teamCategoryMap">

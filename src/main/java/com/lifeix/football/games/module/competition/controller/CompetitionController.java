@@ -1,6 +1,7 @@
 package com.lifeix.football.games.module.competition.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -16,6 +17,7 @@ public class CompetitionController {
     private CompetitionService competitionService;
 
     @RequestMapping(value = "/{competitionId}", method = RequestMethod.GET)
+    @Cacheable(value = "competition", keyGenerator = "wiselyKeyGenerator")
     public Competition findCompetition(@PathVariable(value = "competitionId") Long competitionId) {
         return competitionService.findOne(competitionId);
     }

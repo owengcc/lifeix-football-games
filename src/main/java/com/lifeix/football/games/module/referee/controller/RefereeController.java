@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,6 +22,7 @@ public class RefereeController {
     private RefereeService refereeService;
 
     @RequestMapping(value = "", method = RequestMethod.GET)
+    @Cacheable(value = "referees", keyGenerator = "wiselyKeyGenerator")
     public Map<String, List<Referee>> getReferees(
             @RequestParam(value = "level", required = true) String level,
             @RequestParam(value = "startId", defaultValue = "0", required = false) Long startId,
@@ -30,6 +32,7 @@ public class RefereeController {
     }
 
     @RequestMapping(value = "/{refereeId}", method = RequestMethod.GET)
+    @Cacheable(value = "referee", keyGenerator = "wiselyKeyGenerator")
     public Referee findReferee(@PathVariable(value = "refereeId") Long id) {
         return refereeService.findOne(id);
     }

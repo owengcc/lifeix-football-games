@@ -18,7 +18,6 @@
 		<association property="competition" column="competitionid" select="com.lifeix.football.games.module.competition.mapper.CompetitionMapper.findSimpleOne"></association>
 	</resultMap>
 
-	<!--封装coach表中保存的数据 -->
 	<select id="findNationMathesByPlayerId" resultMap="playerNationalMatchMap">
 		select * from player_nationalmatch where playerid=#{playerId}
 	</select>

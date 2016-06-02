@@ -8,8 +8,6 @@
 		<result column="flag" property="flag" />
 		<association property="teamCategory" column="categoryid"
 			select="com.lifeix.football.games.module.team.mapper.TeamCategoryMapper.findOne"></association>
-		<association property="jerseys" column="id"
-			select="com.lifeix.football.games.module.jerseys.mapper.JerseysMapper.findOne"></association>
 	</resultMap>
 
 	<select id="findOne" resultMap="teamMap">
@@ -30,9 +28,7 @@
 	</resultMap>
 
 	<select id="findSimpleOne" resultMap="teamInfoMap">
-		select * from (select *
-		from team where id=#{id} ) t
-		join jerseys on t .id=jerseys.teamid
+		select * from team where id=#{id} 
 	</select>
 
 	<select id="findTeamsByCategoryId" resultMap="teamInfoMap">

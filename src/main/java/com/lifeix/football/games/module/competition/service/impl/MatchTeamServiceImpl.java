@@ -42,10 +42,10 @@ public class MatchTeamServiceImpl implements MatchTeamService {
         // 职员
         List<Staff> staffs = staffMapper.findStaffByMatchTeamId(matchTeamId);
         for (Staff staff : staffs) {
-            if ("teamleader".equals(staff.getPosition())) {
+            if ("领队".equals(staff.getPosition())) {
                 matchTeam.setTeamLeader(staff);
             }
-            if ("doctor".equals(staff.getPosition())) {
+            if ("队医".equals(staff.getPosition())) {
                 matchTeam.setDoctor(staff);
             }
         }
@@ -53,10 +53,10 @@ public class MatchTeamServiceImpl implements MatchTeamService {
         List<Coach> coaches = coachMapper.findCoachByMatchTeamId(matchTeamId);
         List<Coach> assistantCoaches = new ArrayList<Coach>();
         for (Coach coach : coaches) {
-            if ("chief".equals(coach.getPosition().trim())) {
+            if ("主教练".equals(coach.getPosition().trim())) {
                 matchTeam.setChiefCoach(coach);
             }
-            if ("assistant".equals(coach.getPosition().trim())) {
+            if ("助理教练".equals(coach.getPosition().trim())) {
                 assistantCoaches.add(coach);
             }
         }
